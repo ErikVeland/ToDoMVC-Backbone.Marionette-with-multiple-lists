@@ -2,3 +2,46 @@
 #todoapp.filter-completed #todo-list .active {
 	display: none;
 }
+
+input#title {
+	position: absolute;
+	top: -130px;
+	width: 100%;
+	font-size: 100px;
+	font-weight: 100;
+	text-align: center;
+	color: rgba(175, 47, 47, 0.15);
+	-webkit-text-rendering: optimizeLegibility;
+	-moz-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+	border: none;
+	background: none;
+}
+
+i {
+	font-size: 2.1em;
+}
+
+#info button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  border-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+#info button i {
+	transition: all .2s ease-out;
+	color: rgba(0,0,0,.2);
+	font-size: 60px;
+}
+
+#info button:hover i {
+  color: rgba(0,0,0,.5);
+}
+
+#info button:active i {
+  color: rgba(0,0,0,.9);
+  transform: scale(.9);
+}

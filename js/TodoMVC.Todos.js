@@ -50,7 +50,7 @@ var TodoMVC = TodoMVC || {};
 	TodoMVC.TodoList = Backbone.Collection.extend({
 		model: TodoMVC.Todo,
 
-		localStorage: new Backbone.LocalStorage('todos-backbone-marionette'),
+		localStorage: new Backbone.LocalStorage('todos-reminders'),
 
 		comparator: 'created',
 

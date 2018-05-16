@@ -6,70 +6,25 @@
 		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
 		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
 		<link rel="stylesheet" href="css/app.css">
+		
+		<script src="https://use.fontawesome.com/18fda2177b.js"></script>
 	</head>
 	<body>
 		<!-- Define the elements which the app will render into -->
 		<section id="todoapp">
-			<header id="header"></header>
+			<header id="title-input"></header>
+			<section id="header"></section>
 			<section id="main"></section>
 			<footer id="footer"></footer>
 		</section>
 		
 		<!--Static-->
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
+			<button title="Add new list"><i class="fa fa4x fa-plus-circle"></i></button>
 		</footer>
 		
 		<!-- Templates for the footer, header and todoItemView are defined as HTML-templates using script -->
-		
-		<!-- Footer template with todo count, filters and clear button -->
-		<script type="text/html" id="template-footer">
-			
-			<!-- Dynamic counter with static-ish label (item/items) -->
-			<span id="todo-count">
-				<strong><%= activeCount %></strong> <%= activeCountLabel() %>
-			</span>
-			
-			<!-- Filters create URLs to be handled by the router -->
-			<ul id="filters">
-				<li class="all">
-					<a href="#/">All</a>
-				</li>
-				<li class="active">
-					<a href="#/active">Active</a>
-				</li>
-				<li class="completed">
-					<a href="#/completed">Completed</a>
-				</li>
-			</ul>
-			
-			<!-- Only show button if there are completed items -->
-			<button id="clear-completed" <% if (!completedCount) { %>class="hidden"<% } %>>Clear completed</button>
-		</script>
-		
-		<!-- Header template with input for adding todos -->
-		<script type="text/html" id="template-header">
-			<h1>todos</h1>
-			<input id="new-todo" placeholder="What needs to be done?" autofocus>
-		</script>
-		
-		<!-- ItemView for each todo, includes checkbox for completed item, title and delete button -->
-		<script type="text/html" id="template-todoItemView">
-			<div class="view">
-				<input class="toggle" type="checkbox" <% if (completed) { %>checked<% } %>>
-				<label><%- title %></label>
-				<button class="destroy"></button>
-			</div>
-			<input class="edit" value="<%- title %>">
-		</script>
-		
-		<!-- Toggle all -->
-		<script type="text/html" id="template-todoListView">
-			<input id="toggle-all" type="checkbox">
-			<label for="toggle-all">Mark all as complete</label>
-			<ul></ul>
-		</script>
-		
+				
 		<!-- vendor libraries -->
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/jquery/dist/jquery.js"></script>
@@ -80,6 +35,7 @@
 		<script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
 		<!-- application -->
 		<script src="js/TodoMVC.Application.js"></script>
+		<script src="js/TodoMVC.Title.js"></script>
 		<script src="js/TodoMVC.Todos.js"></script>
 		<script src="js/TodoMVC.Layout.js"></script>
 		<script src="js/TodoMVC.TodoList.Views.js"></script>

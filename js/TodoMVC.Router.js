@@ -27,20 +27,30 @@ var TodoMVC = TodoMVC || {};
 
 		initialize: function () {
 			this.todoList = new TodoMVC.TodoList();
+			this.titleList = new TodoMVC.TitleList();
 		},
 
 		// Start the app by showing the appropriate views
 		// and fetching the list of todo items, if there are any
 		start: function () {
+			this.showTitle(this.titleList);
 			this.showHeader(this.todoList);
 			this.showFooter(this.todoList);
 			this.showTodoList(this.todoList);
 			this.todoList.on('all', this.updateHiddenElements, this);
 			this.todoList.fetch();
+			this.titleList.fetch();
 		},
 
 		updateHiddenElements: function () {
 			$('#main, #footer').toggle(!!this.todoList.length);
+		},
+		
+		showTitle: function (titleList) {
+			var title = new TodoMVC.TitleView({
+				collection: titleList
+			});
+			TodoMVC.App.root.showChildView('titleInput', title);
 		},
 
 		showHeader: function (todoList) {
@@ -56,14 +66,14 @@ var TodoMVC = TodoMVC || {};
 			});
 			TodoMVC.App.root.showChildView('footer', footer);
 		},
-
+		
 		showTodoList: function (todoList) {
 			TodoMVC.App.root.showChildView('main', new TodoMVC.ListView({
 				collection: todoList
 			}));
 		},
 
-		// Set the filter to show complete or all items
+		// Set the filter to show completed or all items
 		filterItems: function (filter) {
 			var newFilter = filter && filter.trim() || 'all';
 			filterChannel.request('filterState').set('filter', newFilter);

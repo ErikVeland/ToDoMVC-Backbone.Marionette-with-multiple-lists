@@ -16,7 +16,8 @@ var TodoMVC = TodoMVC || {};
 
 		tagName: 'li',
 
-		template: '#template-todoItemView',
+		// Todo Item template with checkbox and delete button
+		template: _.template('<div class="view">	<input class="toggle" type="checkbox" <% if (completed) { %>checked<% } %>><label><%- title %></label>	<button class="destroy"></button></div><input class="edit" value="<%- title %>">'),
 
 		className: function () {
 			return this.model.get('completed') ? 'completed' : 'active';
@@ -28,7 +29,8 @@ var TodoMVC = TodoMVC || {};
 			label: 'label',
 			toggle: '.toggle'
 		},
-
+		
+		// Editing events
 		events: {
 			'click @ui.destroy': 'deleteModel',
 			'dblclick @ui.label': 'onEditClick',
@@ -80,7 +82,7 @@ var TodoMVC = TodoMVC || {};
 			}
 		}
 	});
-
+	
 	// Item List View Body
 	// --------------
 	//
@@ -104,8 +106,8 @@ var TodoMVC = TodoMVC || {};
 	//
 	// Manages List View
 	TodoMVC.ListView = Mn.View.extend({
-
-		template: '#template-todoListView',
+		// Toggle all
+		template: _.template('<input id="toggle-all" type="checkbox"><label for="toggle-all">Mark all as complete</label><ul></ul>'),
 
 		regions: {
 			listBody: {
